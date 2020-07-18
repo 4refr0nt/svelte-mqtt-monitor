@@ -5,14 +5,14 @@
 
 ## Demos
 
-![https://svelte-mqtt-monitor.vercel.app](https://svelte-mqtt-monitor.vercel.app/)
+[https://svelte-mqtt-monitor.vercel.app](https://svelte-mqtt-monitor.vercel.app/)
 
 ## Get started
 
 ### Requiring
 
 - [Node.JS](https://nodejs.org/) installed (not required for docker install)
-- MQTT broker with ![enabled  MQTT over WebSockets or MQTT over WebSockets Secure](https://www.google.com/webhp?newwindow=1&q=mqtt+over+websockets) (ws or wss)
+- MQTT broker with [enabled  MQTT over WebSockets or MQTT over WebSockets Secure](https://www.google.com/webhp?newwindow=1&q=mqtt+over+websockets) (ws or wss)
 
 ### Development
 
@@ -33,7 +33,7 @@ and run app
 npm run dev
 ```
 
-...then open browser link ![http://localhost:5000](http://localhost:5000)
+...then open browser link [http://localhost:5000](http://localhost:5000)
 
 ### docker install
 
