@@ -1,15 +1,20 @@
+[Awesome](https://badgen.net/badge/icon/awesome?icon=awesome&label)
 # Svelte MQTT Monitor
 
 ![Svelte MQTT Monitor](https://raw.githubusercontent.com/4refr0nt/svelte-mqtt-monitor/master/image.png)
 
+## Demos
+
+[https://svelte-mqtt-monitor.vercel.app](https://svelte-mqtt-monitor.vercel.app/)
+
 ## Get started
 
-##### Requiring
+### Requiring
 
 - [Node.JS](https://nodejs.org/) installed (not required for docker install)
 - MQTT broker with [enabled  MQTT over WebSockets or MQTT over WebSockets Secure](https://www.google.com/webhp?newwindow=1&q=mqtt+over+websockets) (ws or wss)
 
-##### Development
+### Development
 
 ```bash
 git clone https://github.com/4refr0nt/svelte-mqtt-monitor.git
@@ -30,7 +35,7 @@ npm run dev
 
 ...then open browser link [http://localhost:5000](http://localhost:5000)
 
-##### docker install
+### docker install
 
 ```bash
 git clone https://github.com/4refr0nt/svelte-mqtt-monitor.git
