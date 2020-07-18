@@ -230,7 +230,7 @@
   <span class="navbar-brand">
     <img
       class="logo d-inline-block align-top"
-      src="/images/logo.svg"
+      src="images/logo.svg"
       alt="Svelte" />
     Svelte
   </span>

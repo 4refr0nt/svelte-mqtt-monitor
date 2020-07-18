@@ -15,7 +15,7 @@
     "@rollup/plugin-replace": "^2.3.3",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "rollup": "^2.21.0",
+    "rollup": "^2.22.0",
     "rollup-plugin-analyzer": "^3.3.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-hot": "^0.1.0",

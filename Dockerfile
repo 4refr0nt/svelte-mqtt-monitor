@@ -1,21 +1,20 @@
 FROM node:12.18-alpine
 
-USER node
+RUN npm install -g rollup sirv-cli
 
-RUN mkdir -p /home/node/app
+RUN mkdir -p /app
 
-WORKDIR /home/node/app
+WORKDIR /app
 
 ENV NODE_ENV production
 
-COPY --chown=node package*.json ./
+COPY . .
 
-RUN npm ci
+RUN npm install && npm run build
 
-COPY --chown=node . .
+EXPOSE 5000
 
-RUN npm install --dev && npm run build
+ENV HOST=0.0.0.0
 
 CMD [ "npm", "start" ]
-
 
