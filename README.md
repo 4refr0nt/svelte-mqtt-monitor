@@ -22,7 +22,9 @@ and run app
 npm run dev
 ```
 
-...then open browser link [http://localhost:5000](http://localhost:5000):
+...then open browser link [http://localhost:5000](http://localhost:5000)
 
 
 Enjoy!
+
+![Svelte MQTT Monitor](https://raw.githubusercontent.com/4refr0nt/svelte-mqtt-monitor/master/image.png)
