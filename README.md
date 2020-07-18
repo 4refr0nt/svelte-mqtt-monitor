@@ -54,7 +54,7 @@ then run
 npm run build
 docker-compose up -d
 ```
-configure `nginx` or `traefik` as reverse-proxy to 5000 port 
+configure `nginx` or `traefik` as reverse-proxy to `5000` port 
 (see example part of config `nginx-include.conf`) or
 open browser `http:\\address:5000`
 
