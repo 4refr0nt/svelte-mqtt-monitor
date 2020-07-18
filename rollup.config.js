@@ -4,8 +4,11 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import bundleSize from 'rollup-plugin-bundle-size';
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
 import replace from '@rollup/plugin-replace';
+
+// load ENV var from .env file
+dotenv.config();
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -18,6 +21,19 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		replace({
+			DEVICE_ID: JSON.stringify(process.env.DEVICE_ID),
+			MQTT_PROTOCOL: JSON.stringify(process.env.MQTT_PROTOCOL),
+			MQTT_HOST: JSON.stringify(process.env.MQTT_HOST),
+			MQTT_PORT: JSON.stringify(process.env.MQTT_PORT),
+			MQTT_USERNAME: JSON.stringify(process.env.MQTT_USERNAME),
+			MQTT_PASSWORD: JSON.stringify(process.env.MQTT_PASSWORD),
+			MQTT_PATH: JSON.stringify(process.env.MQTT_PATH),
+			MQTT_SUBSCRIBE_TOPIC: JSON.stringify(process.env.MQTT_SUBSCRIBE_TOPIC),
+			MQTT_MAX_MESSAGES: JSON.stringify(process.env.MQTT_MAX_MESSAGES),
+			DATE_FORMAT: JSON.stringify(process.env.DATE_FORMAT),
+		}),
+
 		svelte({
 			// enable run-time checks when not in production
 			dev: !production,
@@ -28,14 +44,6 @@ export default {
 			}
 		}),
 
-		replace({
-			__app: JSON.stringify({
-				env: {
-					isProd: production,
-					...config().parsed // attached the .env config
-				}
-			}),
-		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -

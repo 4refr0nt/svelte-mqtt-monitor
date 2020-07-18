@@ -22,38 +22,25 @@
   export let name;
   export let messages = [];
   let msg;
-  const env = [
-    'DEVICE_ID',
-    'MQTT_PROTOCOL',
-    'MQTT_HOST',
-    'MQTT_PORT',
-    'MQTT_USERNAME',
-    'MQTT_PASSWORD',
-    'MQTT_PATH',
-    'MQTT_SUBSCRIBE_TOPIC',
-    'MQTT_MAX_MESSAGES',
-    'DATE_FORMAT',
-  ];
   let isSettingsOpen = true;
-  const date_format = __app.env.DATE_FORMAT;
-  const max_messages = __app.env.MQTT_MAX_MESSAGES;
   let clientId = 'monitor_';
-  if (__app.env.DEVICE_ID) {
-    clientId += __app.env.DEVICE_ID;
+  if (DEVICE_ID) {
+    clientId += DEVICE_ID;
   }
   clientId += '_' + Math.floor(Math.random() * 10000);
   let connected = false;
   const dispatch = createEventDispatcher();
+  const date_format = DATE_FORMAT;
   const mqtt_options = {
     clientId: clientId,
     servers: [
       {
-        host: __app.env.MQTT_HOST,
-        port: __app.env.MQTT_PORT,
-        protocol: __app.env.MQTT_PROTOCOL,
+        host: MQTT_HOST,
+        port: Number(MQTT_PORT),
+        protocol: MQTT_PROTOCOL,
       },
     ],
-    path: __app.env.MQTT_PATH,
+    path: '/' + MQTT_PATH,
     protocolId: 'MQTT',
     protocolVersion: 4,
     clean: true,
@@ -61,15 +48,15 @@
     connectTimeout: 30 * 1000,
     rejectUnauthorized: false,
   };
-  if (__app.env.MQTT_USERNAME) {
-    mqtt_options.username = __app.env.MQTT_USERNAME;
-    mqtt_options.password = __app.env.MQTT_PASSWORD;
+  if (MQTT_USERNAME) {
+    mqtt_options.username = MQTT_USERNAME;
+    mqtt_options.password = MQTT_PASSWORD;
   }
   const url = `${mqtt_options.servers[0].protocol}://${mqtt_options.servers[0].host}:${mqtt_options.servers[0].port}${mqtt_options.path}`;
   const onConnect = () => {
     console.log(`MQTT connected ${url}`);
     connected = client.connected;
-    const topic = __app.env.MQTT_SUBSCRIBE_TOPIC;
+    const topic = MQTT_SUBSCRIBE_TOPIC;
     client.subscribe(topic, function (err) {
       if (err) {
         console.error(err);
@@ -81,7 +68,7 @@
   };
 
   const addMessage = (topic, msg, time) => {
-    if (messages.length > max_messages) {
+    if (messages.length > Number(MQTT_MAX_MESSAGES)) {
       messages = messages.slice(0);
     }
     messages = [
@@ -283,16 +270,46 @@
           </tr>
         </thead>
         <tbody class="text-left">
-          {#each env as item, v}
-            <tr>
-              <td>{item}</td>
-              {#if item === 'MQTT_PASSWORD'}
-                <td>********</td>
-              {:else}
-                <td>{__app.env[item]}</td>
-              {/if}
-            </tr>
-          {/each}
+          <tr>
+            <td>DEVICE ID</td>
+            <td>{DEVICE_ID}</td>
+          </tr>
+          <tr>
+            <td>MQTT PROTOCOL</td>
+            <td>{MQTT_PROTOCOL}</td>
+          </tr>
+          <tr>
+            <td>MQTT HOST</td>
+            <td>{MQTT_HOST}</td>
+          </tr>
+          <tr>
+            <td>MQTT PORT</td>
+            <td>{MQTT_PORT}</td>
+          </tr>
+          <tr>
+            <td>MQTT USERNAME</td>
+            <td>{MQTT_USERNAME}</td>
+          </tr>
+          <tr>
+            <td>MQTT PASSWORD</td>
+            <td>******</td>
+          </tr>
+          <tr>
+            <td>MQTT PATH</td>
+            <td>{MQTT_PATH}</td>
+          </tr>
+          <tr>
+            <td>MQTT SUBSCRIBE TOPIC</td>
+            <td>{MQTT_SUBSCRIBE_TOPIC}</td>
+          </tr>
+          <tr>
+            <td>MQTT MAX MESSAGES</td>
+            <td>{MQTT_MAX_MESSAGES}</td>
+          </tr>
+          <tr>
+            <td>DATE FORMAT</td>
+            <td>{date_format}</td>
+          </tr>
         </tbody>
       </Table>
     </Card>
