@@ -36,12 +36,11 @@
   let isSettingsOpen = true;
   const date_format = __app.env.DATE_FORMAT;
   const max_messages = __app.env.MQTT_MAX_MESSAGES;
-  let clientId;
+  let clientId = 'monitor_';
   if (__app.env.DEVICE_ID) {
-    clientId = `monitor_${__app.env.DEVICE_ID}`;
-  } else {
-    clientId = 'monitor_' + Math.floor(Math.random() * 10000);
+    clientId += __app.env.DEVICE_ID;
   }
+  clientId += '_' + Math.floor(Math.random() * 10000);
   let connected = false;
   const dispatch = createEventDispatcher();
   const mqtt_options = {
