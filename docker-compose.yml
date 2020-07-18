@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  mqtt-monitor:
+    image: mqtt-monitor
+    container_name: mqtt-monitor
+    restart: unless-stopped
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/home/node/app
