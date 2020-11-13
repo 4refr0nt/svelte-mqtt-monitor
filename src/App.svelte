@@ -1,4 +1,5 @@
 <script>
+  import mqtt from 'mqtt/dist/mqtt.min';
   import IoIosArrowDown from 'svelte-icons/io/IoIosArrowDown.svelte';
   import IoIosTrash from 'svelte-icons/io/IoIosTrash.svelte';
   import IoIosSettings from 'svelte-icons/io/IoIosSettings.svelte';
