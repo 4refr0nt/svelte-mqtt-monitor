@@ -23,7 +23,7 @@
     "rollup-plugin-svelte": "^5.2.3",
     "rollup-plugin-svelte-hot": "^0.10.0",
     "rollup-plugin-terser": "^6.1.0",
-    "svelte": "^3.24.0",
+    "svelte": "^3.49.0",
     "svelte-loader": "^2.13.6",
     "svelte-watch": "^1.1.0"
   },
