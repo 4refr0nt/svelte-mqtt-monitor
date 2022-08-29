@@ -20,7 +20,7 @@
 git clone https://github.com/4refr0nt/svelte-mqtt-monitor.git
 cd svelte-mqtt-monitor
 npm i
-cp .env.sample .env
+cp .env.default .env
 ```
 …then edit .env - broker settigs
 
@@ -41,7 +41,7 @@ npm run dev
 git clone https://github.com/4refr0nt/svelte-mqtt-monitor.git
 cd svelte-mqtt-monitor
 npm i
-cp .env.sample .env
+cp .env.default .env
 ```
 …then edit .env - broker connection settings
 
